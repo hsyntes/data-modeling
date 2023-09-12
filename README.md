@@ -182,3 +182,18 @@ userSchema.pre('findOne', function (next) {
 ```
 
 When the document is queried with 'findOne', the posts will be fetched that the user document related.
+
+### Set the reference
+
+```javascript
+exports.createPost = async (req, res, next) => {
+  try {
+    const post = await Post.create({
+      title: req.body.title,
+      text: req.body.text,
+      postedBy: req.user, // The current user that create this document will be settled as referenced
+    });
+    //...
+  }
+}
+```
