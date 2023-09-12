@@ -211,12 +211,10 @@ exports.createPost = async (req, res, next) => {
 
 ### Set the references as **unique**
 
-$addToSet and $pull operators prevent duplicated fields in MongoDB.
+$addToSet and $pull operators prevent duplicated fields when a field added/removed from an array in MongoDB.
 
 ```javascript
-// * Starting the transaction
-
-// For posts
+// Starting the transaction
 const session = await mongoose.startSession();
 session.startTransaction();
 await Post.findById(id).session(session);
