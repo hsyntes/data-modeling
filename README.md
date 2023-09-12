@@ -198,6 +198,10 @@ exports.createPost = async (req, res, next) => {
 }
 ```
 
-Want to see an example with a **real application**, please have a look at my [instagram](https://github.com/hsyntes/instamern-api) project. You can reach out advanced data modeling & schema design with aggregation pipeline, aggregation middleware, setting references with unique, etc.
+Want to see an example with a **real application**, please have a look at my [instamern](https://github.com/hsyntes/instamern-api) project. You can reach out advanced data modeling & schema design with aggregation pipeline, aggregation middleware, setting references with unique, etc.
 
 [![InstaMERN](https://github.com/hsyntes/instamern/blob/main/public/logo.png)](https://instamern.netlify.app)
+
+## 🔗 Contact me
+
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/hsyntes)
