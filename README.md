@@ -201,7 +201,8 @@ exports.createPost = async (req, res, next) => {
     const post = await Post.create({
       title: req.body.title,
       text: req.body.text,
-      postedBy: req.user._id, // The current user that create this document will be settled as referenced
+      // The current user that create this document will be settled as referenced
+      postedBy: req.user._id,
     });
     //...
   }
