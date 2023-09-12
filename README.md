@@ -9,6 +9,7 @@ Both Data Modeling and Schema Design are crucial in the development of databases
 mongoose npm package runs top of MongoDB like a framework and it ensures to implement both **data modeling** & **schema design**.
 
 ```javascript
+// User Schema Design
 const userSchema = new mongoose.Schema({
   username: {
     type: String,
@@ -17,6 +18,8 @@ const userSchema = new mongoose.Schema({
     unique: true,
     trim: true,
   },
+
+  // ...
 
   password: {
     type: String,
@@ -27,6 +30,7 @@ const userSchema = new mongoose.Schema({
     select: false,
   },
 
+  // Password validation
   passwordConfirm: {
     type: String,
     required: [true, "Please confirm your password."],
