@@ -65,6 +65,11 @@ exports.likePost = async (req, res, next) => {
 
     const { id } = req.params;
 
+    // * Starting the transaction
+    const session = await mongoose.startSession();
+    session.startTransaction();
+    await Post.findById(id).session(session);
+
     await Post.findByIdAndUpdate(
       id,
       {
