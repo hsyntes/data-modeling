@@ -40,6 +40,58 @@ exports.getUser = async (req, res, next) => {
   }
 };
 
-exports.follow = async (req, res, next) => {};
+exports.follow = async (req, res, next) => {
+  try {
+    if (!req.params.id)
+      return next(
+        new ErrorProvider(403, "fail", "Please specify a user id to follow.")
+      );
 
-exports.unfollow = async (req, res, next) => {};
+    const { id } = req.params;
+
+    const user = await User.findByIdAndUpdate(
+      id,
+      {
+        $addToSet: { followers: req.user._id },
+      },
+      { new: true, runValidators: true }
+    );
+
+    await User.findByIdAndUpdate(
+      req.user._id,
+      {
+        $addToSet: { followings: user._id },
+      },
+      { new: true, runValidators: true }
+    );
+  } catch (e) {
+    next(e);
+  }
+};
+
+exports.unfollow = async (req, res, next) => {
+  try {
+    if (!req.params.id)
+      return next(
+        new ErrorProvider(403, "fail", "Please specify a user id to unfollow.")
+      );
+
+    const { id } = req.params;
+
+    const user = await User.findByIdAndUpdate(
+      id,
+      {
+        $pull: { followers: req.user._id },
+      },
+      { new: true, runValidators: true }
+    );
+
+    await User.findByIdAndUpdate(
+      req.user._id,
+      {
+        $pull: { followings: user._id },
+      },
+      { new: true, runValidators: true }
+    );
+  } catch (e) {}
+};

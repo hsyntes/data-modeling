@@ -38,6 +38,12 @@ const userSchema = new mongoose.Schema(
         type: mongoose.Schema.Types.ObjectId,
       },
     ],
+
+    followings: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+      },
+    ],
   },
   {
     versionKey: false,

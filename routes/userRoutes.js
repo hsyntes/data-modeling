@@ -15,7 +15,7 @@ router.get("/:id", getUser);
 router.post("/signup", signup);
 router.post("/login", login);
 
-router.patch("/follow", follow);
-router.patch("/unfollow", unfollow);
+router.patch("/follow/:id", follow);
+router.patch("/unfollow/:id", unfollow);
 
 module.exports = router;
