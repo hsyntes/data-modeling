@@ -31,6 +31,20 @@ const postSchema = new mongoose.Schema(
   }
 );
 
+// * Virtual populating
+postSchema.virtual("comments", {
+  ref: "Comment",
+  foreignField: "commentedPost",
+  localField: "_id",
+});
+
+// * Query Middleware
+postSchema.pre("findOne", function (next) {
+  this.populate("comments");
+
+  next();
+});
+
 const Post = mongoose.model("Post", postSchema);
 
 module.exports = Post;

@@ -52,6 +52,7 @@ const userSchema = new mongoose.Schema(
   }
 );
 
+// * Virtual populating
 userSchema.virtual("posts", {
   ref: "Post",
   foreignField: "postedBy",

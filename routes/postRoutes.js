@@ -8,6 +8,8 @@ const {
   unlikePost,
 } = require("../controllers/postController");
 
+const commentRoutes = require("./commentRoutes");
+
 const router = express.Router();
 
 // * Protect after this
@@ -20,5 +22,7 @@ router.post("/create", createPost);
 
 router.patch("/like/:id", likePost);
 router.patch("/unlike/:id", unlikePost);
+
+router.use("/:postId", commentRoutes);
 
 module.exports = router;
