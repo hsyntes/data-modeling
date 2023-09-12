@@ -209,6 +209,33 @@ exports.createPost = async (req, res, next) => {
 }
 ```
 
+### Set the references as **unique**
+
+$addToSet and $pull operators prevent duplicated fields in MongoDB.
+
+```javascript
+// * Starting the transaction
+
+// For posts
+const session = await mongoose.startSession();
+session.startTransaction();
+await Post.findById(id).session(session);
+
+await Post.findByIdAndUpdate(
+  id,
+  {
+    $addToSet: { likes: req.user._id },
+  },
+  { new: true, runValidators: true }
+);
+
+await Post.findByIdAndUpdate(id, {
+  $pull: { likes: req.user._id },
+});
+```
+
+Session transaction starts a multi-document transaction associated with the session. Multi-document transactions are available for both shared clusters and replica sets.
+
 Want to see an example with a **real application**, please have a look at my [instamern](https://github.com/hsyntes/instamern-api) project. You can reach out advanced data modeling & schema design with aggregation pipeline, aggregation middleware, setting references with unique, etc.
 
 [![InstaMERN](https://github.com/hsyntes/instamern/blob/main/public/logo.png)](https://instamern.netlify.app)
