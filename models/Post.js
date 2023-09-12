@@ -16,6 +16,13 @@ const postSchema = new mongoose.Schema(
     postedBy: {
       type: mongoose.Schema.Types.ObjectId,
     },
+
+    // * One-to-many referencing
+    likes: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+      },
+    ],
   },
   {
     versionKey: false,

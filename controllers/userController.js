@@ -39,3 +39,7 @@ exports.getUser = async (req, res, next) => {
     next(e);
   }
 };
+
+exports.follow = async (req, res, next) => {};
+
+exports.unfollow = async (req, res, next) => {};

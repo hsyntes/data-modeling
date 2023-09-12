@@ -32,6 +32,12 @@ const userSchema = new mongoose.Schema(
         message: "Password doesn't match.",
       },
     },
+
+    followers: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+      },
+    ],
   },
   {
     versionKey: false,

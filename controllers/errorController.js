@@ -30,6 +30,8 @@ const tokenExpiredError = () =>
   new ErrorProvider(401, "fail", "Authorization expired. Please log in again.");
 
 module.exports = (err, req, res, next) => {
+  console.log(err);
+
   // * Error messages for production
   if (process.env.NODE_ENV === "production") {
     if (err.code === 11000) err = uniqueError(err);
