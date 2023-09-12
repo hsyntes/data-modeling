@@ -40,6 +40,7 @@ postSchema.virtual("comments", {
 
 // * Query Middleware
 postSchema.pre("findOne", function (next) {
+  // Populate field(s)
   this.populate("comments");
 
   next();

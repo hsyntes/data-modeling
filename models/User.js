@@ -71,6 +71,7 @@ userSchema.pre("save", async function (next) {
 
 // * Query Middleware
 userSchema.pre("findOne", function (next) {
+  // Populate field(s)
   this.populate("posts");
 
   next();

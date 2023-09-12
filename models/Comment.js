@@ -8,10 +8,12 @@ const commentSchema = new mongoose.Schema(
       trim: true,
     },
 
+    // * Parent referencing
     commentedBy: {
       type: mongoose.Schema.Types.ObjectId,
     },
 
+    // * Parent referencing
     commentedPost: {
       type: mongoose.Schema.Types.ObjectId,
     },

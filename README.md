@@ -168,7 +168,13 @@ const userSchema = new mongoose.Schema({
     unique: true,
     // ...
   },
-});
+},
+  // Enable virtuals
+  { versionKey: false,
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true }
+  }
+);
 
 // Virtual Populating
 userSchema.virtual("Posts", { // Keep documents under "posts" field
@@ -195,7 +201,7 @@ exports.createPost = async (req, res, next) => {
     const post = await Post.create({
       title: req.body.title,
       text: req.body.text,
-      postedBy: req.user, // The current user that create this document will be settled as referenced
+      postedBy: req.user._id, // The current user that create this document will be settled as referenced
     });
     //...
   }
